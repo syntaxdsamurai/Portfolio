@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhruv Saini - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        :root {
+            --bg-color: #FFFFFF;
+            --text-primary: #1E1E1E;
+            --text-secondary: #555555;
+            --accent-color: #FBBF24; /* Yellow/Gold */
+            --border-color: #EAEAEA;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+        }
+        
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease-in-out;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero-shape {
+            background-color: var(--accent-color);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: morph 8s ease-in-out infinite;
+            transition: border-radius 1s ease-in-out;
+        }
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        .primary-btn {
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .secondary-btn {
+            background-color: transparent;
+            border: 2px solid var(--text-primary);
+        }
+        .secondary-btn:hover {
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+        }
+
+        .card {
+            background-color: #F9FAFB;
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Timeline Styles */
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid var(--border-color);
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+            padding-bottom: 0;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.5rem;
+            top: 0.25rem;
+            height: 1rem;
+            width: 1rem;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-900">Dhruv Saini</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-gray-700 font-medium">Home</a>
+                <a href="#skills" class="nav-link text-gray-700 font-medium">Skills</a>
+                <a href="#experience" class="nav-link text-gray-700 font-medium">Experience</a>
+                <a href="#projects" class="nav-link text-gray-700 font-medium">Projects</a>
+                <a href="#contact" class="nav-link text-gray-700 font-medium">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-900">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 border-t border-gray-200">
+            <a href="#home" class="block py-3 px-4 text-sm hover:bg-gray-100">Home</a>
+            <a href="#skills" class="block py-3 px-4 text-sm hover:bg-gray-100">Skills</a>
+            <a href="#experience" class="block py-3 px-4 text-sm hover:bg-gray-100">Experience</a>
+            <a href="#projects" class="block py-3 px-4 text-sm hover:bg-gray-100">Projects</a>
+            <a href="#contact" class="block py-3 px-4 text-sm hover:bg-gray-100">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                    <!-- Left Column: Intro Text -->
+                    <div class="md:w-1/2 text-center md:text-left" data-aos="fade-right">
+                        <span class="text-lg font-semibold font-mono" style="color: var(--accent-color);">FULL-STACK DEVELOPER</span>
+                        <h1 class="font-serif text-5xl md:text-7xl font-bold text-gray-900 my-4">Hello, my name is Dhruv Saini</h1>
+                        <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                            I design and build beautiful, high-quality websites and applications. I specialize in turning complex problems into simple and intuitive solutions.
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                            <a href="#projects" class="primary-btn">Projects</a>
+                            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="secondary-btn primary-btn">LinkedIn</a>
+                        </div>
+                    </div>
+                    <!-- Right Column: Image -->
+                    <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                        <div class="relative w-full max-w-md">
+                            <div class="hero-shape absolute inset-0"></div>
+                            <img src="https://placehold.co/500x600/FFFFFF/1E1E1E?text=Your+PNG+Here" alt="Dhruv Saini" class="relative w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6" data-aos="fade-up">
+                <h2 class="section-title text-center mb-16 font-serif">My Tech Stack</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 text-center">
+                    <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-24 h-24 mb-4 bg-white rounded-full flex items-center justify-center text-5xl text-[#61DAFB] transition-transform hover:scale-110 shadow-md"><i class="fab fa-react"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 font-mono">React</h3>
+                    </div>
+                    <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-24 h-24 mb-4 bg-white rounded-full flex items-center justify-center text-5xl text-[#8CC84B] transition-transform hover:scale-110 shadow-md"><i class="fab fa-node-js"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 font-mono">Node.js</h3>
+                    </div>
+                    <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-24 h-24 mb-4 bg-white rounded-full flex items-center justify-center text-5xl text-[#F7DF1E] transition-transform hover:scale-110 shadow-md"><i class="fab fa-js-square"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 font-mono">JavaScript</h3>
+                    </div>
+                    <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="w-24 h-24 mb-4 bg-white rounded-full flex items-center justify-center text-5xl text-[#38BDF8] transition-transform hover:scale-110 shadow-md"><i class="fab fa-css3-alt"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 font-mono">Tailwind CSS</h3>
+                    </div>
+                     <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="500">
+                        <div class="w-24 h-24 mb-4 bg-white rounded-full flex items-center justify-center text-5xl text-[#4DB33D] transition-transform hover:scale-110 shadow-md"><i class="fas fa-database"></i></div>
+                        <h3 class="text-xl font-semibold text-gray-800 font-mono">MongoDB</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-24">
+            <div class="container mx-auto px-6" data-aos="fade-up">
+                <h2 class="section-title text-center mb-16 font-serif">Work Experience</h2>
+                <div class="max-w-3xl mx-auto">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-dot"></div>
+                        <p class="font-mono text-sm text-gray-500 mb-1">Jan 2023 - Present</p>
+                        <h3 class="text-2xl font-bold text-gray-900">Senior Developer at TechCorp</h3>
+                        <ul class="list-disc list-inside mt-2 text-gray-600 space-y-2">
+                            <li>Led the development of a new client-facing dashboard using React and TypeScript.</li>
+                            <li>Mentored junior developers and conducted code reviews to maintain code quality.</li>
+                            <li>Improved application performance by 30% by optimizing API calls and database queries.</li>
+                        </ul>
+                    </div>
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-dot"></div>
+                        <p class="font-mono text-sm text-gray-500 mb-1">Jun 2021 - Dec 2022</p>
+                        <h3 class="text-2xl font-bold text-gray-900">Full-Stack Developer at Innovate LLC</h3>
+                        <ul class="list-disc list-inside mt-2 text-gray-600 space-y-2">
+                            <li>Developed and maintained full-stack web applications for various clients.</li>
+                            <li>Collaborated with designers to create responsive and user-friendly interfaces.</li>
+                            <li>Built RESTful APIs with Node.js and Express for our mobile app.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6" data-aos="fade-up">
+                <h2 class="section-title text-center mb-12 font-serif">Featured Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <a href="project-1.html" class="block card group" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://placehold.co/600x400/0D99FF/FFFFFF?text=Project+1" alt="Project 1" class="w-full h-56 object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-gray-900 font-mono">E-commerce Platform</h3>
+                            <p class="text-gray-600 mb-4">A full-featured e-commerce site built with the MERN stack.</p>
+                        </div>
+                    </a>
+                    <a href="project-2.html" class="block card group" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://placehold.co/600x400/34D399/FFFFFF?text=Project+2" alt="Project 2" class="w-full h-56 object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-gray-900 font-mono">Task Management App</h3>
+                            <p class="text-gray-600 mb-4">A real-time, collaborative task manager for teams.</p>
+                        </div>
+                    </a>
+                    <a href="project-3.html" class="block card group" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://placehold.co/600x400/FBBF24/FFFFFF?text=Project+3" alt="Project 3" class="w-full h-56 object-cover rounded-t-lg">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-gray-900 font-mono">Portfolio Website</h3>
+                            <p class="text-gray-600 mb-4">A personal portfolio built with Next.js and Tailwind CSS.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Know Me More Section -->
+        <section id="know-me" class="py-24">
+            <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+                <h2 class="section-title font-serif mb-4">Beyond the Code</h2>
+                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-8">
+                    When I'm not building applications, I'm probably exploring virtual worlds, creating art, or just enjoying some good music. Want to see what I'm passionate about outside of work?
+                </p>
+                <a href="fun.html" class="primary-btn inline-block text-lg">Know me more</a>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6" data-aos="fade-up">
+                <h2 class="section-title text-center mb-12 font-serif">Certifications</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="card flex items-center p-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-4xl text-yellow-500 mr-6"><i class="fab fa-aws"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 font-mono">AWS Solutions Architect</h3>
+                            <p class="text-gray-600">Architecting and deploying secure and robust applications on AWS technologies.</p>
+                        </div>
+                    </div>
+                    <div class="card flex items-center p-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-4xl text-blue-500 mr-6"><i class="fas fa-shield-alt"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 font-mono">Security Specialist</h3>
+                            <p class="text-gray-600">Expertise in data protection and infrastructure security in the cloud.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Currently Learning Section -->
+        <section id="learning" class="py-24">
+            <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+                <h2 class="section-title font-serif mb-4">Always Growing</h2>
+                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-8">
+                    I believe in lifelong learning. Currently, I'm diving deep into:
+                </p>
+                <div class="inline-block bg-yellow-100 text-yellow-800 font-mono font-bold text-lg px-6 py-3 rounded-lg">
+                    WebAssembly (WASM)
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+                <h2 class="section-title font-serif mb-4">Get In Touch</h2>
+                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-8">
+                    I'm currently available for freelance work and open to discussing new projects. Let's create something amazing together!
+                </p>
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                     <a href="mailto:dhruvsaini466@gmail.com" class="primary-btn inline-block text-lg">Email Me</a>
+                     <a href="https://github.com/dhruvxdsaini" target="_blank" class="secondary-btn primary-btn text-lg">GitHub</a>
+                     <a href="https://x.com/dhruvxdsaini" target="_blank" class="secondary-btn primary-btn text-lg">Twitter</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 bg-gray-900">
+        <div class="container mx-auto px-6 flex justify-between items-center text-gray-400 text-sm">
+            <p>&copy; 2025 Dhruv Saini. All Rights Reserved.</p>
+            <div class="flex items-center space-x-6">
+                <a href="https://github.com/dhruvxdsaini" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-github fa-lg"></i></a>
+                <a href="https://x.com/dhruvxdsaini" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a href="mailto:dhruvsaini466@gmail.com" class="hover:text-white transition-colors"><i class="fas fa-envelope fa-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize Animate on Scroll
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+    </script>
+
+</body>
+</html>
